@@ -495,19 +495,19 @@ version (Dynamic) {
 
 }
 else {
+    extern (C) {
+        void    wl_list_init        (wl_list *list);
+        void    wl_list_insert      (wl_list *list, wl_list *elm);
+        void    wl_list_remove      (wl_list *elm);
+        int     wl_list_length      (const (wl_list*) list);
+        int     wl_list_empty       (const (wl_list*) list);
+        void    wl_list_insert_list (wl_list *list, wl_list *other);
 
-    void    wl_list_init        (wl_list *list);
-    void    wl_list_insert      (wl_list *list, wl_list *elm);
-    void    wl_list_remove      (wl_list *elm);
-    int     wl_list_length      (const (wl_list*) list);
-    int     wl_list_empty       (const (wl_list*) list);
-    void    wl_list_insert_list (wl_list *list, wl_list *other);
-
-    void    wl_array_init       (wl_array *array);
-    void    wl_array_release    (wl_array *array);
-    void *  wl_array_add        (wl_array *array, size_t size);
-    int     wl_array_copy       (wl_array *array, wl_array *source);
-
+        void    wl_array_init       (wl_array *array);
+        void    wl_array_release    (wl_array *array);
+        void *  wl_array_add        (wl_array *array, size_t size);
+        int     wl_array_copy       (wl_array *array, wl_array *source);
+    }
 }
 
 
