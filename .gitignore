@@ -1,0 +1,16 @@
+## dub
+.dub
+docs.json
+__dummy.html
+*.o
+*.obj
+*.a
+*.so
+
+# Dolphin FM
+.directory
+
+## this repo
+dub.selections.json
+codegen-help.sh
+

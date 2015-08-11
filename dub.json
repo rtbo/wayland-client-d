@@ -1,0 +1,23 @@
+{
+    "name": "wayland-client-d",
+    "description": "Wayland bindings for D.",
+    "copyright": "Copyright © 2015, remi.thebault",
+    "authors": ["remi.thebault"],
+    "targetType": "library",
+    "platforms": ["linux"],
+    "configurations": [
+        {
+            "name": "static",
+            "versions": [],
+            "libs": ["wayland-client"],
+            "dependencies": {}
+        },
+        {
+            "name": "dynamic",
+            "versions": ["Dynamic"],
+            "dependencies": {
+                "derelict-util": "~>2.0.3"
+            }
+        }
+    ]
+}
