@@ -35,21 +35,20 @@ version (Dynamic) {
 
 
     private __gshared WaylandClientLoader clientLoader;
-    private __gshared ifaces.WaylandClientLoader ifacesLoader;
     private __gshared WaylandEglLoader eglLoader;
 
+
     enum wld_client_lib_name = "libwayland-client.so";
-    enum wld_egl_lib_name = "libwayland-egl.so";
 
     public void loadWaylandClient() {
         if (clientLoader) return;
 
         clientLoader = new WaylandClientLoader(wld_client_lib_name);
-        ifacesLoader = new ifaces.WaylandClientLoader(wld_client_lib_name);
-
         clientLoader.load();
-        ifacesLoader.load();
     }
+
+
+    enum wld_egl_lib_name = "libwayland-egl.so";
 
     public void loadWaylandEgl() {
         if (eglLoader) return;
@@ -65,13 +64,15 @@ version (Dynamic) {
         }
     }
 
-    private class WaylandClientLoader : SharedLibLoader
+    private class WaylandClientLoader : ifaces.WaylandClientLoader
     {
         public this(string libName) {
             super(libName);
         }
 
         protected override void loadSymbols() {
+
+            super.loadSymbols();
 
             bindFunc( cast( void** )&wl_list_init, "wl_list_init");
             bindFunc( cast( void** )&wl_list_insert, "wl_list_insert");
