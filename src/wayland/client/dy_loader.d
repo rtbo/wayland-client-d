@@ -31,21 +31,31 @@ version (Dynamic) {
     import wayland.client.util;
     import wayland.client.core;
     import ifaces = wayland.client.ifaces;
+    import wayland.client.egl;
 
 
     private __gshared WaylandClientLoader clientLoader;
     private __gshared ifaces.WaylandClientLoader ifacesLoader;
+    private __gshared WaylandEglLoader eglLoader;
 
-    enum wld_lib_name = "libwayland-client.so";
+    enum wld_client_lib_name = "libwayland-client.so";
+    enum wld_egl_lib_name = "libwayland-egl.so";
 
     public void loadWaylandClient() {
         if (clientLoader) return;
 
-        clientLoader = new WaylandClientLoader(wld_lib_name);
-        ifacesLoader = new ifaces.WaylandClientLoader(wld_lib_name);
+        clientLoader = new WaylandClientLoader(wld_client_lib_name);
+        ifacesLoader = new ifaces.WaylandClientLoader(wld_client_lib_name);
 
         clientLoader.load();
         ifacesLoader.load();
+    }
+
+    public void loadWaylandEgl() {
+        if (eglLoader) return;
+
+        eglLoader = new WaylandEglLoader(wld_egl_lib_name);
+        eglLoader.load();
     }
 
 
@@ -112,6 +122,23 @@ version (Dynamic) {
             bindFunc( cast( void** )&wl_display_read_events, "wl_display_read_events");
 
             bindFunc( cast( void** )&wl_log_set_handler_client, "wl_log_set_handler_client");
+
+        }
+    }
+
+    private class WaylandEglLoader : SharedLibLoader
+    {
+        public this(string libName) {
+            super(libName);
+        }
+
+        protected override void loadSymbols() {
+
+            bindFunc( cast( void** )&wl_egl_window_create, "wl_egl_window_create");
+            bindFunc( cast( void** )&wl_egl_window_destroy, "wl_egl_window_destroy");
+            bindFunc( cast( void** )&wl_egl_window_resize, "wl_egl_window_resize");
+            bindFunc( cast( void** )&wl_egl_window_get_attached_size,
+                                    "wl_egl_window_get_attached_size");
 
         }
     }

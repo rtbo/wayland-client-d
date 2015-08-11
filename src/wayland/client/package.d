@@ -29,4 +29,5 @@ public import wayland.client.protocol;
 public import wayland.client.opaque_types;
 public import wayland.client.util;
 public import wayland.client.ifaces;
+public import wayland.client.egl;
 public import wayland.client.dy_loader;
