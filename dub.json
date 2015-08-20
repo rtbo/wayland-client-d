@@ -3,6 +3,7 @@
     "description": "Wayland bindings for D.",
     "copyright": "Copyright © 2015, remi.thebault",
     "authors": ["remi.thebault"],
+    "license": "MIT",
     "targetType": "library",
     "platforms": ["linux"],
     "configurations": [
