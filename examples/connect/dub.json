@@ -1,0 +1,16 @@
+{
+	"name": "connect",
+	"authors": [
+		"Rémi Thebault"
+	],
+	"description": "connect wayland example",
+	"copyright": "Copyright © 2016, Rémi Thebault",
+	"license": "MIT",
+	"targetType": "executable",
+	"dependencies": {
+		"wayland-client-d": { "path": "../.." }
+	},
+	"subConfigurations": {
+		"wayland-client-d": "static"
+	}
+}

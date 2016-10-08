@@ -20,5 +20,8 @@
                 "derelict-util": "~>2.0.3"
             }
         }
+    ],
+    "subPackages": [
+        "examples/connect"
     ]
 }
