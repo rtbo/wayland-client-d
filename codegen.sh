@@ -49,13 +49,13 @@ fi
 
 
 cat $PROTOCOL | $SCANNER -m wayland.client.protocol \
-        --client --protocol -o $SRC/wayland/client/protocol.d \
+        --mode client --protocol -o $SRC/wayland/client/protocol.d \
         -x wayland.client.core -x wayland.client.ifaces
 
 cat $PROTOCOL | $SCANNER -m wayland.client.ifaces \
-        --client --ifaces --ifaces_priv_mod wayland.client.priv.ifaces \
+        --mode client --ifaces --ifaces_priv_mod wayland.client.priv.ifaces \
         -o $SRC/wayland/client/ifaces.d
 
 cat $PROTOCOL | $SCANNER -m wayland.client.priv.ifaces \
-        --client --ifaces --ifaces_priv \
+        --mode client --ifaces --ifaces_priv \
         -o $SRC/wayland/client/priv/ifaces.d
