@@ -1,6 +1,9 @@
 # wayland-client-d
 
-D bindings to wayland-client library
+D bindings to wayland-client library.
+
+Project not maintained anymore.
+Superseded by the [wayland-d](https://github.com/rtbo/wayland-d.git) project.
 
 D code sample:
 
